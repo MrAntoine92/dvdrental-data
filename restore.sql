@@ -27,7 +27,7 @@ DROP DATABASE dvdrental;
 -- Name: dvdrental; Type: DATABASE; Schema: -; Owner: neondb_owner
 --
 
-CREATE DATABASE dvdrental WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'English_United States.1252' LC_CTYPE = 'English_United States.1252';
+CREATE DATABASE dvdrental WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE = 'en_US.UTF-8';
 
 
 ALTER DATABASE dvdrental OWNER TO neondb_owner;
@@ -271,9 +271,9 @@ CREATE SEQUENCE public.customer_customer_id_seq
 
 ALTER TABLE public.customer_customer_id_seq OWNER TO neondb_owner;
 
-SET default_tablespace = '';
+-- SET default_tablespace = '';
 
-SET default_with_oids = false;
+-- SET default_with_oids = false;
 
 --
 -- Name: customer; Type: TABLE; Schema: public; Owner: neondb_owner
