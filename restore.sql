@@ -24,13 +24,13 @@ SET row_security = off;
 
 DROP DATABASE dvdrental;
 --
--- Name: dvdrental; Type: DATABASE; Schema: -; Owner: postgres
+-- Name: dvdrental; Type: DATABASE; Schema: -; Owner: neondb_owner
 --
 
 CREATE DATABASE dvdrental WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'English_United States.1252' LC_CTYPE = 'English_United States.1252';
 
 
-ALTER DATABASE dvdrental OWNER TO postgres;
+ALTER DATABASE dvdrental OWNER TO neondb_owner;
 
 \connect dvdrental
 
@@ -45,7 +45,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- Name: mpaa_rating; Type: TYPE; Schema: public; Owner: postgres
+-- Name: mpaa_rating; Type: TYPE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TYPE public.mpaa_rating AS ENUM (
@@ -57,20 +57,20 @@ CREATE TYPE public.mpaa_rating AS ENUM (
 );
 
 
-ALTER TYPE public.mpaa_rating OWNER TO postgres;
+ALTER TYPE public.mpaa_rating OWNER TO neondb_owner;
 
 --
--- Name: year; Type: DOMAIN; Schema: public; Owner: postgres
+-- Name: year; Type: DOMAIN; Schema: public; Owner: neondb_owner
 --
 
 CREATE DOMAIN public.year AS integer
 	CONSTRAINT year_check CHECK (((VALUE >= 1901) AND (VALUE <= 2155)));
 
 
-ALTER DOMAIN public.year OWNER TO postgres;
+ALTER DOMAIN public.year OWNER TO neondb_owner;
 
 --
--- Name: _group_concat(text, text); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: _group_concat(text, text); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
 
 CREATE FUNCTION public._group_concat(text, text) RETURNS text
@@ -84,10 +84,10 @@ END
 $_$;
 
 
-ALTER FUNCTION public._group_concat(text, text) OWNER TO postgres;
+ALTER FUNCTION public._group_concat(text, text) OWNER TO neondb_owner;
 
 --
--- Name: film_in_stock(integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: film_in_stock(integer, integer); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
 
 CREATE FUNCTION public.film_in_stock(p_film_id integer, p_store_id integer, OUT p_film_count integer) RETURNS SETOF integer
@@ -101,10 +101,10 @@ CREATE FUNCTION public.film_in_stock(p_film_id integer, p_store_id integer, OUT 
 $_$;
 
 
-ALTER FUNCTION public.film_in_stock(p_film_id integer, p_store_id integer, OUT p_film_count integer) OWNER TO postgres;
+ALTER FUNCTION public.film_in_stock(p_film_id integer, p_store_id integer, OUT p_film_count integer) OWNER TO neondb_owner;
 
 --
--- Name: film_not_in_stock(integer, integer); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: film_not_in_stock(integer, integer); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
 
 CREATE FUNCTION public.film_not_in_stock(p_film_id integer, p_store_id integer, OUT p_film_count integer) RETURNS SETOF integer
@@ -118,10 +118,10 @@ CREATE FUNCTION public.film_not_in_stock(p_film_id integer, p_store_id integer, 
 $_$;
 
 
-ALTER FUNCTION public.film_not_in_stock(p_film_id integer, p_store_id integer, OUT p_film_count integer) OWNER TO postgres;
+ALTER FUNCTION public.film_not_in_stock(p_film_id integer, p_store_id integer, OUT p_film_count integer) OWNER TO neondb_owner;
 
 --
--- Name: get_customer_balance(integer, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: get_customer_balance(integer, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
 
 CREATE FUNCTION public.get_customer_balance(p_customer_id integer, p_effective_date timestamp without time zone) RETURNS numeric
@@ -163,10 +163,10 @@ END
 $$;
 
 
-ALTER FUNCTION public.get_customer_balance(p_customer_id integer, p_effective_date timestamp without time zone) OWNER TO postgres;
+ALTER FUNCTION public.get_customer_balance(p_customer_id integer, p_effective_date timestamp without time zone) OWNER TO neondb_owner;
 
 --
--- Name: inventory_held_by_customer(integer); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: inventory_held_by_customer(integer); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
 
 CREATE FUNCTION public.inventory_held_by_customer(p_inventory_id integer) RETURNS integer
@@ -185,10 +185,10 @@ BEGIN
 END $$;
 
 
-ALTER FUNCTION public.inventory_held_by_customer(p_inventory_id integer) OWNER TO postgres;
+ALTER FUNCTION public.inventory_held_by_customer(p_inventory_id integer) OWNER TO neondb_owner;
 
 --
--- Name: inventory_in_stock(integer); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: inventory_in_stock(integer); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
 
 CREATE FUNCTION public.inventory_in_stock(p_inventory_id integer) RETURNS boolean
@@ -222,10 +222,10 @@ BEGIN
 END $$;
 
 
-ALTER FUNCTION public.inventory_in_stock(p_inventory_id integer) OWNER TO postgres;
+ALTER FUNCTION public.inventory_in_stock(p_inventory_id integer) OWNER TO neondb_owner;
 
 --
--- Name: last_day(timestamp without time zone); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: last_day(timestamp without time zone); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
 
 CREATE FUNCTION public.last_day(timestamp without time zone) RETURNS date
@@ -240,10 +240,10 @@ CREATE FUNCTION public.last_day(timestamp without time zone) RETURNS date
 $_$;
 
 
-ALTER FUNCTION public.last_day(timestamp without time zone) OWNER TO postgres;
+ALTER FUNCTION public.last_day(timestamp without time zone) OWNER TO neondb_owner;
 
 --
--- Name: last_updated(); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: last_updated(); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
 
 CREATE FUNCTION public.last_updated() RETURNS trigger
@@ -255,10 +255,10 @@ BEGIN
 END $$;
 
 
-ALTER FUNCTION public.last_updated() OWNER TO postgres;
+ALTER FUNCTION public.last_updated() OWNER TO neondb_owner;
 
 --
--- Name: customer_customer_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: customer_customer_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.customer_customer_id_seq
@@ -269,14 +269,14 @@ CREATE SEQUENCE public.customer_customer_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.customer_customer_id_seq OWNER TO postgres;
+ALTER TABLE public.customer_customer_id_seq OWNER TO neondb_owner;
 
 SET default_tablespace = '';
 
 SET default_with_oids = false;
 
 --
--- Name: customer; Type: TABLE; Schema: public; Owner: postgres
+-- Name: customer; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.customer (
@@ -293,10 +293,10 @@ CREATE TABLE public.customer (
 );
 
 
-ALTER TABLE public.customer OWNER TO postgres;
+ALTER TABLE public.customer OWNER TO neondb_owner;
 
 --
--- Name: rewards_report(integer, numeric); Type: FUNCTION; Schema: public; Owner: postgres
+-- Name: rewards_report(integer, numeric); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
 
 CREATE FUNCTION public.rewards_report(min_monthly_purchases integer, min_dollar_amount_purchased numeric) RETURNS SETOF public.customer
@@ -357,10 +357,10 @@ END
 $_$;
 
 
-ALTER FUNCTION public.rewards_report(min_monthly_purchases integer, min_dollar_amount_purchased numeric) OWNER TO postgres;
+ALTER FUNCTION public.rewards_report(min_monthly_purchases integer, min_dollar_amount_purchased numeric) OWNER TO neondb_owner;
 
 --
--- Name: group_concat(text); Type: AGGREGATE; Schema: public; Owner: postgres
+-- Name: group_concat(text); Type: AGGREGATE; Schema: public; Owner: neondb_owner
 --
 
 CREATE AGGREGATE public.group_concat(text) (
@@ -369,10 +369,10 @@ CREATE AGGREGATE public.group_concat(text) (
 );
 
 
-ALTER AGGREGATE public.group_concat(text) OWNER TO postgres;
+ALTER AGGREGATE public.group_concat(text) OWNER TO neondb_owner;
 
 --
--- Name: actor_actor_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: actor_actor_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.actor_actor_id_seq
@@ -383,10 +383,10 @@ CREATE SEQUENCE public.actor_actor_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.actor_actor_id_seq OWNER TO postgres;
+ALTER TABLE public.actor_actor_id_seq OWNER TO neondb_owner;
 
 --
--- Name: actor; Type: TABLE; Schema: public; Owner: postgres
+-- Name: actor; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.actor (
@@ -397,10 +397,10 @@ CREATE TABLE public.actor (
 );
 
 
-ALTER TABLE public.actor OWNER TO postgres;
+ALTER TABLE public.actor OWNER TO neondb_owner;
 
 --
--- Name: category_category_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: category_category_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.category_category_id_seq
@@ -411,10 +411,10 @@ CREATE SEQUENCE public.category_category_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.category_category_id_seq OWNER TO postgres;
+ALTER TABLE public.category_category_id_seq OWNER TO neondb_owner;
 
 --
--- Name: category; Type: TABLE; Schema: public; Owner: postgres
+-- Name: category; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.category (
@@ -424,10 +424,10 @@ CREATE TABLE public.category (
 );
 
 
-ALTER TABLE public.category OWNER TO postgres;
+ALTER TABLE public.category OWNER TO neondb_owner;
 
 --
--- Name: film_film_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: film_film_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.film_film_id_seq
@@ -438,10 +438,10 @@ CREATE SEQUENCE public.film_film_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.film_film_id_seq OWNER TO postgres;
+ALTER TABLE public.film_film_id_seq OWNER TO neondb_owner;
 
 --
--- Name: film; Type: TABLE; Schema: public; Owner: postgres
+-- Name: film; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.film (
@@ -461,10 +461,10 @@ CREATE TABLE public.film (
 );
 
 
-ALTER TABLE public.film OWNER TO postgres;
+ALTER TABLE public.film OWNER TO neondb_owner;
 
 --
--- Name: film_actor; Type: TABLE; Schema: public; Owner: postgres
+-- Name: film_actor; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.film_actor (
@@ -474,10 +474,10 @@ CREATE TABLE public.film_actor (
 );
 
 
-ALTER TABLE public.film_actor OWNER TO postgres;
+ALTER TABLE public.film_actor OWNER TO neondb_owner;
 
 --
--- Name: film_category; Type: TABLE; Schema: public; Owner: postgres
+-- Name: film_category; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.film_category (
@@ -487,10 +487,10 @@ CREATE TABLE public.film_category (
 );
 
 
-ALTER TABLE public.film_category OWNER TO postgres;
+ALTER TABLE public.film_category OWNER TO neondb_owner;
 
 --
--- Name: actor_info; Type: VIEW; Schema: public; Owner: postgres
+-- Name: actor_info; Type: VIEW; Schema: public; Owner: neondb_owner
 --
 
 CREATE VIEW public.actor_info AS
@@ -510,10 +510,10 @@ CREATE VIEW public.actor_info AS
   GROUP BY a.actor_id, a.first_name, a.last_name;
 
 
-ALTER TABLE public.actor_info OWNER TO postgres;
+ALTER TABLE public.actor_info OWNER TO neondb_owner;
 
 --
--- Name: address_address_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: address_address_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.address_address_id_seq
@@ -524,10 +524,10 @@ CREATE SEQUENCE public.address_address_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.address_address_id_seq OWNER TO postgres;
+ALTER TABLE public.address_address_id_seq OWNER TO neondb_owner;
 
 --
--- Name: address; Type: TABLE; Schema: public; Owner: postgres
+-- Name: address; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.address (
@@ -542,10 +542,10 @@ CREATE TABLE public.address (
 );
 
 
-ALTER TABLE public.address OWNER TO postgres;
+ALTER TABLE public.address OWNER TO neondb_owner;
 
 --
--- Name: city_city_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: city_city_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.city_city_id_seq
@@ -556,10 +556,10 @@ CREATE SEQUENCE public.city_city_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.city_city_id_seq OWNER TO postgres;
+ALTER TABLE public.city_city_id_seq OWNER TO neondb_owner;
 
 --
--- Name: city; Type: TABLE; Schema: public; Owner: postgres
+-- Name: city; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.city (
@@ -570,10 +570,10 @@ CREATE TABLE public.city (
 );
 
 
-ALTER TABLE public.city OWNER TO postgres;
+ALTER TABLE public.city OWNER TO neondb_owner;
 
 --
--- Name: country_country_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: country_country_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.country_country_id_seq
@@ -584,10 +584,10 @@ CREATE SEQUENCE public.country_country_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.country_country_id_seq OWNER TO postgres;
+ALTER TABLE public.country_country_id_seq OWNER TO neondb_owner;
 
 --
--- Name: country; Type: TABLE; Schema: public; Owner: postgres
+-- Name: country; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.country (
@@ -597,10 +597,10 @@ CREATE TABLE public.country (
 );
 
 
-ALTER TABLE public.country OWNER TO postgres;
+ALTER TABLE public.country OWNER TO neondb_owner;
 
 --
--- Name: customer_list; Type: VIEW; Schema: public; Owner: postgres
+-- Name: customer_list; Type: VIEW; Schema: public; Owner: neondb_owner
 --
 
 CREATE VIEW public.customer_list AS
@@ -622,10 +622,10 @@ CREATE VIEW public.customer_list AS
      JOIN public.country ON ((city.country_id = country.country_id)));
 
 
-ALTER TABLE public.customer_list OWNER TO postgres;
+ALTER TABLE public.customer_list OWNER TO neondb_owner;
 
 --
--- Name: film_list; Type: VIEW; Schema: public; Owner: postgres
+-- Name: film_list; Type: VIEW; Schema: public; Owner: neondb_owner
 --
 
 CREATE VIEW public.film_list AS
@@ -645,10 +645,10 @@ CREATE VIEW public.film_list AS
   GROUP BY film.film_id, film.title, film.description, category.name, film.rental_rate, film.length, film.rating;
 
 
-ALTER TABLE public.film_list OWNER TO postgres;
+ALTER TABLE public.film_list OWNER TO neondb_owner;
 
 --
--- Name: inventory_inventory_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: inventory_inventory_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.inventory_inventory_id_seq
@@ -659,10 +659,10 @@ CREATE SEQUENCE public.inventory_inventory_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.inventory_inventory_id_seq OWNER TO postgres;
+ALTER TABLE public.inventory_inventory_id_seq OWNER TO neondb_owner;
 
 --
--- Name: inventory; Type: TABLE; Schema: public; Owner: postgres
+-- Name: inventory; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.inventory (
@@ -673,10 +673,10 @@ CREATE TABLE public.inventory (
 );
 
 
-ALTER TABLE public.inventory OWNER TO postgres;
+ALTER TABLE public.inventory OWNER TO neondb_owner;
 
 --
--- Name: language_language_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: language_language_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.language_language_id_seq
@@ -687,10 +687,10 @@ CREATE SEQUENCE public.language_language_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.language_language_id_seq OWNER TO postgres;
+ALTER TABLE public.language_language_id_seq OWNER TO neondb_owner;
 
 --
--- Name: language; Type: TABLE; Schema: public; Owner: postgres
+-- Name: language; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.language (
@@ -700,10 +700,10 @@ CREATE TABLE public.language (
 );
 
 
-ALTER TABLE public.language OWNER TO postgres;
+ALTER TABLE public.language OWNER TO neondb_owner;
 
 --
--- Name: nicer_but_slower_film_list; Type: VIEW; Schema: public; Owner: postgres
+-- Name: nicer_but_slower_film_list; Type: VIEW; Schema: public; Owner: neondb_owner
 --
 
 CREATE VIEW public.nicer_but_slower_film_list AS
@@ -723,10 +723,10 @@ CREATE VIEW public.nicer_but_slower_film_list AS
   GROUP BY film.film_id, film.title, film.description, category.name, film.rental_rate, film.length, film.rating;
 
 
-ALTER TABLE public.nicer_but_slower_film_list OWNER TO postgres;
+ALTER TABLE public.nicer_but_slower_film_list OWNER TO neondb_owner;
 
 --
--- Name: payment_payment_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: payment_payment_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.payment_payment_id_seq
@@ -737,10 +737,10 @@ CREATE SEQUENCE public.payment_payment_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.payment_payment_id_seq OWNER TO postgres;
+ALTER TABLE public.payment_payment_id_seq OWNER TO neondb_owner;
 
 --
--- Name: payment; Type: TABLE; Schema: public; Owner: postgres
+-- Name: payment; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.payment (
@@ -753,10 +753,10 @@ CREATE TABLE public.payment (
 );
 
 
-ALTER TABLE public.payment OWNER TO postgres;
+ALTER TABLE public.payment OWNER TO neondb_owner;
 
 --
--- Name: rental_rental_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: rental_rental_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.rental_rental_id_seq
@@ -767,10 +767,10 @@ CREATE SEQUENCE public.rental_rental_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.rental_rental_id_seq OWNER TO postgres;
+ALTER TABLE public.rental_rental_id_seq OWNER TO neondb_owner;
 
 --
--- Name: rental; Type: TABLE; Schema: public; Owner: postgres
+-- Name: rental; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.rental (
@@ -784,10 +784,10 @@ CREATE TABLE public.rental (
 );
 
 
-ALTER TABLE public.rental OWNER TO postgres;
+ALTER TABLE public.rental OWNER TO neondb_owner;
 
 --
--- Name: sales_by_film_category; Type: VIEW; Schema: public; Owner: postgres
+-- Name: sales_by_film_category; Type: VIEW; Schema: public; Owner: neondb_owner
 --
 
 CREATE VIEW public.sales_by_film_category AS
@@ -803,10 +803,10 @@ CREATE VIEW public.sales_by_film_category AS
   ORDER BY (sum(p.amount)) DESC;
 
 
-ALTER TABLE public.sales_by_film_category OWNER TO postgres;
+ALTER TABLE public.sales_by_film_category OWNER TO neondb_owner;
 
 --
--- Name: staff_staff_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: staff_staff_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.staff_staff_id_seq
@@ -817,10 +817,10 @@ CREATE SEQUENCE public.staff_staff_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.staff_staff_id_seq OWNER TO postgres;
+ALTER TABLE public.staff_staff_id_seq OWNER TO neondb_owner;
 
 --
--- Name: staff; Type: TABLE; Schema: public; Owner: postgres
+-- Name: staff; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.staff (
@@ -838,10 +838,10 @@ CREATE TABLE public.staff (
 );
 
 
-ALTER TABLE public.staff OWNER TO postgres;
+ALTER TABLE public.staff OWNER TO neondb_owner;
 
 --
--- Name: store_store_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: store_store_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
 
 CREATE SEQUENCE public.store_store_id_seq
@@ -852,10 +852,10 @@ CREATE SEQUENCE public.store_store_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.store_store_id_seq OWNER TO postgres;
+ALTER TABLE public.store_store_id_seq OWNER TO neondb_owner;
 
 --
--- Name: store; Type: TABLE; Schema: public; Owner: postgres
+-- Name: store; Type: TABLE; Schema: public; Owner: neondb_owner
 --
 
 CREATE TABLE public.store (
@@ -866,10 +866,10 @@ CREATE TABLE public.store (
 );
 
 
-ALTER TABLE public.store OWNER TO postgres;
+ALTER TABLE public.store OWNER TO neondb_owner;
 
 --
--- Name: sales_by_store; Type: VIEW; Schema: public; Owner: postgres
+-- Name: sales_by_store; Type: VIEW; Schema: public; Owner: neondb_owner
 --
 
 CREATE VIEW public.sales_by_store AS
@@ -888,10 +888,10 @@ CREATE VIEW public.sales_by_store AS
   ORDER BY cy.country, c.city;
 
 
-ALTER TABLE public.sales_by_store OWNER TO postgres;
+ALTER TABLE public.sales_by_store OWNER TO neondb_owner;
 
 --
--- Name: staff_list; Type: VIEW; Schema: public; Owner: postgres
+-- Name: staff_list; Type: VIEW; Schema: public; Owner: neondb_owner
 --
 
 CREATE VIEW public.staff_list AS
@@ -909,10 +909,10 @@ CREATE VIEW public.staff_list AS
      JOIN public.country ON ((city.country_id = country.country_id)));
 
 
-ALTER TABLE public.staff_list OWNER TO postgres;
+ALTER TABLE public.staff_list OWNER TO neondb_owner;
 
 --
--- Data for Name: actor; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: actor; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.actor (actor_id, first_name, last_name, last_update) FROM stdin;
@@ -920,7 +920,7 @@ COPY public.actor (actor_id, first_name, last_name, last_update) FROM stdin;
 COPY public.actor (actor_id, first_name, last_name, last_update) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3057.dat';
 
 --
--- Data for Name: address; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: address; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.address (address_id, address, address2, district, city_id, postal_code, phone, last_update) FROM stdin;
@@ -928,7 +928,7 @@ COPY public.address (address_id, address, address2, district, city_id, postal_co
 COPY public.address (address_id, address, address2, district, city_id, postal_code, phone, last_update) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3065.dat';
 
 --
--- Data for Name: category; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: category; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.category (category_id, name, last_update) FROM stdin;
@@ -936,7 +936,7 @@ COPY public.category (category_id, name, last_update) FROM stdin;
 COPY public.category (category_id, name, last_update) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3059.dat';
 
 --
--- Data for Name: city; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: city; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.city (city_id, city, country_id, last_update) FROM stdin;
@@ -944,7 +944,7 @@ COPY public.city (city_id, city, country_id, last_update) FROM stdin;
 COPY public.city (city_id, city, country_id, last_update) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3067.dat';
 
 --
--- Data for Name: country; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: country; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.country (country_id, country, last_update) FROM stdin;
@@ -952,7 +952,7 @@ COPY public.country (country_id, country, last_update) FROM stdin;
 COPY public.country (country_id, country, last_update) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3069.dat';
 
 --
--- Data for Name: customer; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: customer; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.customer (customer_id, store_id, first_name, last_name, email, address_id, activebool, create_date, last_update, active) FROM stdin;
@@ -960,7 +960,7 @@ COPY public.customer (customer_id, store_id, first_name, last_name, email, addre
 COPY public.customer (customer_id, store_id, first_name, last_name, email, address_id, activebool, create_date, last_update, active) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3055.dat';
 
 --
--- Data for Name: film; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: film; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.film (film_id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, last_update, special_features, fulltext) FROM stdin;
@@ -968,7 +968,7 @@ COPY public.film (film_id, title, description, release_year, language_id, rental
 COPY public.film (film_id, title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, last_update, special_features, fulltext) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3061.dat';
 
 --
--- Data for Name: film_actor; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: film_actor; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.film_actor (actor_id, film_id, last_update) FROM stdin;
@@ -976,7 +976,7 @@ COPY public.film_actor (actor_id, film_id, last_update) FROM stdin;
 COPY public.film_actor (actor_id, film_id, last_update) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3062.dat';
 
 --
--- Data for Name: film_category; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: film_category; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.film_category (film_id, category_id, last_update) FROM stdin;
@@ -984,7 +984,7 @@ COPY public.film_category (film_id, category_id, last_update) FROM stdin;
 COPY public.film_category (film_id, category_id, last_update) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3063.dat';
 
 --
--- Data for Name: inventory; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: inventory; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.inventory (inventory_id, film_id, store_id, last_update) FROM stdin;
@@ -992,7 +992,7 @@ COPY public.inventory (inventory_id, film_id, store_id, last_update) FROM stdin;
 COPY public.inventory (inventory_id, film_id, store_id, last_update) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3071.dat';
 
 --
--- Data for Name: language; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: language; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.language (language_id, name, last_update) FROM stdin;
@@ -1000,7 +1000,7 @@ COPY public.language (language_id, name, last_update) FROM stdin;
 COPY public.language (language_id, name, last_update) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3073.dat';
 
 --
--- Data for Name: payment; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: payment; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.payment (payment_id, customer_id, staff_id, rental_id, amount, payment_date) FROM stdin;
@@ -1008,7 +1008,7 @@ COPY public.payment (payment_id, customer_id, staff_id, rental_id, amount, payme
 COPY public.payment (payment_id, customer_id, staff_id, rental_id, amount, payment_date) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3075.dat';
 
 --
--- Data for Name: rental; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: rental; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.rental (rental_id, rental_date, inventory_id, customer_id, return_date, staff_id, last_update) FROM stdin;
@@ -1016,7 +1016,7 @@ COPY public.rental (rental_id, rental_date, inventory_id, customer_id, return_da
 COPY public.rental (rental_id, rental_date, inventory_id, customer_id, return_date, staff_id, last_update) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3077.dat';
 
 --
--- Data for Name: staff; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: staff; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.staff (staff_id, first_name, last_name, address_id, email, store_id, active, username, password, last_update, picture) FROM stdin;
@@ -1024,7 +1024,7 @@ COPY public.staff (staff_id, first_name, last_name, address_id, email, store_id,
 COPY public.staff (staff_id, first_name, last_name, address_id, email, store_id, active, username, password, last_update, picture) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3079.dat';
 
 --
--- Data for Name: store; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: store; Type: TABLE DATA; Schema: public; Owner: neondb_owner
 --
 
 COPY public.store (store_id, manager_staff_id, address_id, last_update) FROM stdin;
@@ -1032,98 +1032,98 @@ COPY public.store (store_id, manager_staff_id, address_id, last_update) FROM std
 COPY public.store (store_id, manager_staff_id, address_id, last_update) FROM 'https://raw.githubusercontent.com/MrAntoine92/dvdrental-data/refs/heads/main/3081.dat';
 
 --
--- Name: actor_actor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: actor_actor_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.actor_actor_id_seq', 200, true);
 
 
 --
--- Name: address_address_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: address_address_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.address_address_id_seq', 605, true);
 
 
 --
--- Name: category_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: category_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.category_category_id_seq', 16, true);
 
 
 --
--- Name: city_city_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: city_city_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.city_city_id_seq', 600, true);
 
 
 --
--- Name: country_country_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: country_country_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.country_country_id_seq', 109, true);
 
 
 --
--- Name: customer_customer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: customer_customer_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.customer_customer_id_seq', 599, true);
 
 
 --
--- Name: film_film_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: film_film_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.film_film_id_seq', 1000, true);
 
 
 --
--- Name: inventory_inventory_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: inventory_inventory_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.inventory_inventory_id_seq', 4581, true);
 
 
 --
--- Name: language_language_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: language_language_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.language_language_id_seq', 6, true);
 
 
 --
--- Name: payment_payment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: payment_payment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.payment_payment_id_seq', 32098, true);
 
 
 --
--- Name: rental_rental_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: rental_rental_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.rental_rental_id_seq', 16049, true);
 
 
 --
--- Name: staff_staff_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: staff_staff_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.staff_staff_id_seq', 2, true);
 
 
 --
--- Name: store_store_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Name: store_store_id_seq; Type: SEQUENCE SET; Schema: public; Owner: neondb_owner
 --
 
 SELECT pg_catalog.setval('public.store_store_id_seq', 2, true);
 
 
 --
--- Name: actor actor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: actor actor_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.actor
@@ -1131,7 +1131,7 @@ ALTER TABLE ONLY public.actor
 
 
 --
--- Name: address address_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: address address_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.address
@@ -1139,7 +1139,7 @@ ALTER TABLE ONLY public.address
 
 
 --
--- Name: category category_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: category category_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.category
@@ -1147,7 +1147,7 @@ ALTER TABLE ONLY public.category
 
 
 --
--- Name: city city_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: city city_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.city
@@ -1155,7 +1155,7 @@ ALTER TABLE ONLY public.city
 
 
 --
--- Name: country country_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: country country_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.country
@@ -1163,7 +1163,7 @@ ALTER TABLE ONLY public.country
 
 
 --
--- Name: customer customer_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: customer customer_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.customer
@@ -1171,7 +1171,7 @@ ALTER TABLE ONLY public.customer
 
 
 --
--- Name: film_actor film_actor_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: film_actor film_actor_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.film_actor
@@ -1179,7 +1179,7 @@ ALTER TABLE ONLY public.film_actor
 
 
 --
--- Name: film_category film_category_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: film_category film_category_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.film_category
@@ -1187,7 +1187,7 @@ ALTER TABLE ONLY public.film_category
 
 
 --
--- Name: film film_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: film film_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.film
@@ -1195,7 +1195,7 @@ ALTER TABLE ONLY public.film
 
 
 --
--- Name: inventory inventory_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: inventory inventory_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.inventory
@@ -1203,7 +1203,7 @@ ALTER TABLE ONLY public.inventory
 
 
 --
--- Name: language language_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: language language_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.language
@@ -1211,7 +1211,7 @@ ALTER TABLE ONLY public.language
 
 
 --
--- Name: payment payment_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: payment payment_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.payment
@@ -1219,7 +1219,7 @@ ALTER TABLE ONLY public.payment
 
 
 --
--- Name: rental rental_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: rental rental_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.rental
@@ -1227,7 +1227,7 @@ ALTER TABLE ONLY public.rental
 
 
 --
--- Name: staff staff_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: staff staff_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.staff
@@ -1235,7 +1235,7 @@ ALTER TABLE ONLY public.staff
 
 
 --
--- Name: store store_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: store store_pkey; Type: CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.store
@@ -1243,231 +1243,231 @@ ALTER TABLE ONLY public.store
 
 
 --
--- Name: film_fulltext_idx; Type: INDEX; Schema: public; Owner: postgres
+-- Name: film_fulltext_idx; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX film_fulltext_idx ON public.film USING gist (fulltext);
 
 
 --
--- Name: idx_actor_last_name; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_actor_last_name; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_actor_last_name ON public.actor USING btree (last_name);
 
 
 --
--- Name: idx_fk_address_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_fk_address_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_fk_address_id ON public.customer USING btree (address_id);
 
 
 --
--- Name: idx_fk_city_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_fk_city_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_fk_city_id ON public.address USING btree (city_id);
 
 
 --
--- Name: idx_fk_country_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_fk_country_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_fk_country_id ON public.city USING btree (country_id);
 
 
 --
--- Name: idx_fk_customer_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_fk_customer_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_fk_customer_id ON public.payment USING btree (customer_id);
 
 
 --
--- Name: idx_fk_film_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_fk_film_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_fk_film_id ON public.film_actor USING btree (film_id);
 
 
 --
--- Name: idx_fk_inventory_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_fk_inventory_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_fk_inventory_id ON public.rental USING btree (inventory_id);
 
 
 --
--- Name: idx_fk_language_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_fk_language_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_fk_language_id ON public.film USING btree (language_id);
 
 
 --
--- Name: idx_fk_rental_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_fk_rental_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_fk_rental_id ON public.payment USING btree (rental_id);
 
 
 --
--- Name: idx_fk_staff_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_fk_staff_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_fk_staff_id ON public.payment USING btree (staff_id);
 
 
 --
--- Name: idx_fk_store_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_fk_store_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_fk_store_id ON public.customer USING btree (store_id);
 
 
 --
--- Name: idx_last_name; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_last_name; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_last_name ON public.customer USING btree (last_name);
 
 
 --
--- Name: idx_store_id_film_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_store_id_film_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_store_id_film_id ON public.inventory USING btree (store_id, film_id);
 
 
 --
--- Name: idx_title; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_title; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE INDEX idx_title ON public.film USING btree (title);
 
 
 --
--- Name: idx_unq_manager_staff_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_unq_manager_staff_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE UNIQUE INDEX idx_unq_manager_staff_id ON public.store USING btree (manager_staff_id);
 
 
 --
--- Name: idx_unq_rental_rental_date_inventory_id_customer_id; Type: INDEX; Schema: public; Owner: postgres
+-- Name: idx_unq_rental_rental_date_inventory_id_customer_id; Type: INDEX; Schema: public; Owner: neondb_owner
 --
 
 CREATE UNIQUE INDEX idx_unq_rental_rental_date_inventory_id_customer_id ON public.rental USING btree (rental_date, inventory_id, customer_id);
 
 
 --
--- Name: film film_fulltext_trigger; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: film film_fulltext_trigger; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER film_fulltext_trigger BEFORE INSERT OR UPDATE ON public.film FOR EACH ROW EXECUTE PROCEDURE tsvector_update_trigger('fulltext', 'pg_catalog.english', 'title', 'description');
 
 
 --
--- Name: actor last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: actor last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.actor FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: address last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: address last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.address FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: category last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: category last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.category FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: city last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: city last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.city FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: country last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: country last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.country FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: customer last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: customer last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.customer FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: film last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: film last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.film FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: film_actor last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: film_actor last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.film_actor FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: film_category last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: film_category last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.film_category FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: inventory last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: inventory last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.inventory FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: language last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: language last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.language FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: rental last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: rental last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.rental FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: staff last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: staff last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.staff FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: store last_updated; Type: TRIGGER; Schema: public; Owner: postgres
+-- Name: store last_updated; Type: TRIGGER; Schema: public; Owner: neondb_owner
 --
 
 CREATE TRIGGER last_updated BEFORE UPDATE ON public.store FOR EACH ROW EXECUTE PROCEDURE public.last_updated();
 
 
 --
--- Name: customer customer_address_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: customer customer_address_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.customer
@@ -1475,7 +1475,7 @@ ALTER TABLE ONLY public.customer
 
 
 --
--- Name: film_actor film_actor_actor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: film_actor film_actor_actor_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.film_actor
@@ -1483,7 +1483,7 @@ ALTER TABLE ONLY public.film_actor
 
 
 --
--- Name: film_actor film_actor_film_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: film_actor film_actor_film_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.film_actor
@@ -1491,7 +1491,7 @@ ALTER TABLE ONLY public.film_actor
 
 
 --
--- Name: film_category film_category_category_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: film_category film_category_category_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.film_category
@@ -1499,7 +1499,7 @@ ALTER TABLE ONLY public.film_category
 
 
 --
--- Name: film_category film_category_film_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: film_category film_category_film_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.film_category
@@ -1507,7 +1507,7 @@ ALTER TABLE ONLY public.film_category
 
 
 --
--- Name: film film_language_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: film film_language_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.film
@@ -1515,7 +1515,7 @@ ALTER TABLE ONLY public.film
 
 
 --
--- Name: address fk_address_city; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: address fk_address_city; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.address
@@ -1523,7 +1523,7 @@ ALTER TABLE ONLY public.address
 
 
 --
--- Name: city fk_city; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: city fk_city; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.city
@@ -1531,7 +1531,7 @@ ALTER TABLE ONLY public.city
 
 
 --
--- Name: inventory inventory_film_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: inventory inventory_film_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.inventory
@@ -1539,7 +1539,7 @@ ALTER TABLE ONLY public.inventory
 
 
 --
--- Name: payment payment_customer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: payment payment_customer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.payment
@@ -1547,7 +1547,7 @@ ALTER TABLE ONLY public.payment
 
 
 --
--- Name: payment payment_rental_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: payment payment_rental_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.payment
@@ -1555,7 +1555,7 @@ ALTER TABLE ONLY public.payment
 
 
 --
--- Name: payment payment_staff_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: payment payment_staff_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.payment
@@ -1563,7 +1563,7 @@ ALTER TABLE ONLY public.payment
 
 
 --
--- Name: rental rental_customer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: rental rental_customer_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.rental
@@ -1571,7 +1571,7 @@ ALTER TABLE ONLY public.rental
 
 
 --
--- Name: rental rental_inventory_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: rental rental_inventory_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.rental
@@ -1579,7 +1579,7 @@ ALTER TABLE ONLY public.rental
 
 
 --
--- Name: rental rental_staff_id_key; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: rental rental_staff_id_key; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.rental
@@ -1587,7 +1587,7 @@ ALTER TABLE ONLY public.rental
 
 
 --
--- Name: staff staff_address_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: staff staff_address_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.staff
@@ -1595,7 +1595,7 @@ ALTER TABLE ONLY public.staff
 
 
 --
--- Name: store store_address_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: store store_address_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.store
@@ -1603,7 +1603,7 @@ ALTER TABLE ONLY public.store
 
 
 --
--- Name: store store_manager_staff_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: store store_manager_staff_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: neondb_owner
 --
 
 ALTER TABLE ONLY public.store
