@@ -47,6 +47,7 @@ SET row_security = off;
 --
 -- Name: mpaa_rating; Type: TYPE; Schema: public; Owner: neondb_owner
 --
+DROP TYPE IF EXISTS public.mpaa_rating;
 
 CREATE TYPE public.mpaa_rating AS ENUM (
     'G',
@@ -62,6 +63,7 @@ ALTER TYPE public.mpaa_rating OWNER TO neondb_owner;
 --
 -- Name: year; Type: DOMAIN; Schema: public; Owner: neondb_owner
 --
+DROP DOMAIN IF EXISTS public.year;
 
 CREATE DOMAIN public.year AS integer
 	CONSTRAINT year_check CHECK (((VALUE >= 1901) AND (VALUE <= 2155)));
@@ -72,6 +74,7 @@ ALTER DOMAIN public.year OWNER TO neondb_owner;
 --
 -- Name: _group_concat(text, text); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
+DROP FUNCTION IF EXISTS public._group_concat(text, text);
 
 CREATE FUNCTION public._group_concat(text, text) RETURNS text
     LANGUAGE sql IMMUTABLE
@@ -89,6 +92,7 @@ ALTER FUNCTION public._group_concat(text, text) OWNER TO neondb_owner;
 --
 -- Name: film_in_stock(integer, integer); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
+DROP FUNCTION IF EXISTS public.film_in_stock(integer, integer);
 
 CREATE FUNCTION public.film_in_stock(p_film_id integer, p_store_id integer, OUT p_film_count integer) RETURNS SETOF integer
     LANGUAGE sql
@@ -106,6 +110,7 @@ ALTER FUNCTION public.film_in_stock(p_film_id integer, p_store_id integer, OUT p
 --
 -- Name: film_not_in_stock(integer, integer); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
+DROP FUNCTION IF EXISTS public.film_not_in_stock(integer, integer);
 
 CREATE FUNCTION public.film_not_in_stock(p_film_id integer, p_store_id integer, OUT p_film_count integer) RETURNS SETOF integer
     LANGUAGE sql
@@ -123,6 +128,7 @@ ALTER FUNCTION public.film_not_in_stock(p_film_id integer, p_store_id integer, O
 --
 -- Name: get_customer_balance(integer, timestamp without time zone); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
+DROP FUNCTION IF EXISTS public.get_customer_balance(integer, timestamp without time zone);
 
 CREATE FUNCTION public.get_customer_balance(p_customer_id integer, p_effective_date timestamp without time zone) RETURNS numeric
     LANGUAGE plpgsql
@@ -168,6 +174,7 @@ ALTER FUNCTION public.get_customer_balance(p_customer_id integer, p_effective_da
 --
 -- Name: inventory_held_by_customer(integer); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
+DROP FUNCTION IF EXISTS public.inventory_held_by_customer(integer);
 
 CREATE FUNCTION public.inventory_held_by_customer(p_inventory_id integer) RETURNS integer
     LANGUAGE plpgsql
@@ -190,6 +197,7 @@ ALTER FUNCTION public.inventory_held_by_customer(p_inventory_id integer) OWNER T
 --
 -- Name: inventory_in_stock(integer); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
+DROP FUNCTION IF EXISTS public.inventory_in_stock(integer);
 
 CREATE FUNCTION public.inventory_in_stock(p_inventory_id integer) RETURNS boolean
     LANGUAGE plpgsql
@@ -227,6 +235,7 @@ ALTER FUNCTION public.inventory_in_stock(p_inventory_id integer) OWNER TO neondb
 --
 -- Name: last_day(timestamp without time zone); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
+DROP FUNCTION IF EXISTS public.last_day(timestamp without time zone);
 
 CREATE FUNCTION public.last_day(timestamp without time zone) RETURNS date
     LANGUAGE sql IMMUTABLE STRICT
@@ -245,6 +254,7 @@ ALTER FUNCTION public.last_day(timestamp without time zone) OWNER TO neondb_owne
 --
 -- Name: last_updated(); Type: FUNCTION; Schema: public; Owner: neondb_owner
 --
+DROP FUNCTION IF EXISTS public.last_updated();
 
 CREATE FUNCTION public.last_updated() RETURNS trigger
     LANGUAGE plpgsql
@@ -260,6 +270,7 @@ ALTER FUNCTION public.last_updated() OWNER TO neondb_owner;
 --
 -- Name: customer_customer_id_seq; Type: SEQUENCE; Schema: public; Owner: neondb_owner
 --
+DROP FUNCTION IF EXISTS public.customer_customer_id_seq;
 
 CREATE SEQUENCE public.customer_customer_id_seq
     START WITH 1
