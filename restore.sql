@@ -282,9 +282,9 @@ CREATE SEQUENCE public.customer_customer_id_seq
 
 ALTER TABLE public.customer_customer_id_seq OWNER TO neondb_owner;
 
--- SET default_tablespace = '';
+SET default_tablespace = '';
 
--- SET default_with_oids = false;
+SET default_with_oids = false;
 
 --
 -- Name: customer; Type: TABLE; Schema: public; Owner: neondb_owner
